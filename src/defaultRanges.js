@@ -7,9 +7,13 @@ import {
   addMonths,
   startOfWeek,
   endOfWeek,
+  startOfQuarter,
+  endOfQuarter,
   isSameDay,
   differenceInCalendarDays,
 } from 'date-fns';
+
+const currentYear = new Date().getFullYear();
 
 const defineds = {
   startOfWeek: startOfWeek(new Date()),
@@ -24,6 +28,14 @@ const defineds = {
   endOfMonth: endOfMonth(new Date()),
   startOfLastMonth: startOfMonth(addMonths(new Date(), -1)),
   endOfLastMonth: endOfMonth(addMonths(new Date(), -1)),
+  startOfFirstQuarter: startOfQuarter(new Date(currentYear, 1, 1)),
+  endOfFirstQuarter: endOfQuarter(new Date(currentYear, 1, 1)),
+  startOfSecondQuarter: startOfQuarter(new Date(currentYear, 4, 1)),
+  endOfSecondQuarter: endOfQuarter(new Date(currentYear, 4, 1)),
+  startOfThirdQuarter: startOfQuarter(new Date(currentYear, 7, 1)),
+  endOfThirdQuarter: endOfQuarter(new Date(currentYear, 7, 1)),
+  startOfFourthQuarter: startOfQuarter(new Date(currentYear, 10, 1)),
+  endOfFourthQuarter: endOfQuarter(new Date(currentYear, 10, 1)),
 };
 
 const staticRangeHandler = {
@@ -83,6 +95,34 @@ export const defaultStaticRanges = createStaticRanges([
     range: () => ({
       startDate: defineds.startOfLastMonth,
       endDate: defineds.endOfLastMonth,
+    }),
+  },
+  {
+    label: 'First Quarter',
+    range: () => ({
+      startDate: defineds.startOfFirstQuarter,
+      endDate: defineds.endOfFirstQuarter,
+    }),
+  },
+  {
+    label: 'Second Quarter',
+    range: () => ({
+      startDate: defineds.startOfSecondQuarter,
+      endDate: defineds.endOfSecondQuarter,
+    }),
+  },
+  {
+    label: 'Third Quarter',
+    range: () => ({
+      startDate: defineds.startOfThirdQuarter,
+      endDate: defineds.endOfThirdQuarter,
+    }),
+  },
+  {
+    label: 'Fourth Quarter',
+    range: () => ({
+      startDate: defineds.startOfFourthQuarter,
+      endDate: defineds.endOfFourthQuarter,
     }),
   },
 ]);
